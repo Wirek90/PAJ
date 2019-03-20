@@ -1,5 +1,6 @@
 package com.codecool.model.persistance;
 
+import com.codecool.model.Manager;
 import com.codecool.model.User;
 import com.codecool.model.mediaItems.Book;
 import com.codecool.model.mediaItems.MediaItem;
@@ -18,11 +19,14 @@ public class MediaLibrary {
     );
 
     public void add(MediaItem item, User user) {
+        if (user instanceof Manager) {
             items.add(item);
         }
+    }
 
         public void removeItem(MediaItem item, User user) {
-            if (items.contains(item)) {
+
+            if (user instanceof Manager && items.contains(item)) {
                 items.remove(item);
             }
         }
@@ -42,13 +46,36 @@ public class MediaLibrary {
         return null;
     }
 
-    public void rent(MediaItem item) {
+    public void rent(MediaItem item, User user) {
         MediaItem i = findItem(item);
         i.setAvailability(false);
+        user.addToRented(i);
 
     }
 
+    public MediaItem findItemsbyAuthor(String author) {
+        return null;
+    }
 
+
+    public MediaItem findItembyTitle(String title) {
+        return null;
+    }
+
+    public MediaItem findItembyLength (int length) {
+        return null;
+    }
+
+    public MediaItem findItembyDate (int length) {
+        return null;
+    }
+
+    public void editItemTitle(User user, MediaItem item, String title) {
+        if (user instanceof  Manager) {
+            MediaItem i = findItem(item);
+            i.setTitle(title);
+        }
+    }
 
 }
 
