@@ -72,53 +72,50 @@ public class MediaLibrary {
 
     public void editItemData(MediaItem item, User user, String author, String title, String date, int length, boolean availability) {
         if (user instanceof Manager && items.contains(item)) {
-
             MediaItem i = findItem(item);
+            int idx = items.indexOf(item);
+
             i.setTitle(title);
-            i.setAuthor(author);
             i.setReleaseDate(date);
+            i.setAuthor(author);
             i.setLength(length);
             i.setAvailability(availability);
 
+            items.set(idx, i);
         }
 
     }
 
     public void editItemAuthor(MediaItem item, User user, String author) {
         if (user instanceof Manager && items.contains(item)) {
-            MediaItem i = findItem(item);
-            i.setAuthor(author);
+            int idx = items.indexOf(item);
+            items.get(idx).setAuthor(author);
         }
     }
 
     public void editItemReleaseDate(MediaItem item, User user, String date) {
         if (user instanceof Manager && items.contains(item)) {
-           MediaItem i = findItem(item);
-            i.setReleaseDate(date);
+            int idx = items.indexOf(item);
+            item.setReleaseDate(date);
+            items.set(idx, item);
         }
     }
 
 
     public void editItemLength(MediaItem item, User user, int length) {
         if (user instanceof Manager && items.contains(item)) {
-            MediaItem i = findItem(item);
-            i.setLength(length);
+            int idx = items.indexOf(item);
+            item.setLength(length);
+            items.set(idx, item);
         }
     }
 
 
     public void editItemTitle(MediaItem item, User user, String title) {
         if (user instanceof Manager && items.contains(item)) {
-            MediaItem i = findItem(item);
-            i.setTitle(title);
-        }
-    }
-
-
-    public void editItemAvailability(MediaItem item, User user, boolean availability) {
-        if (user instanceof Manager && items.contains(item)) {
-            MediaItem i = findItem(item);
-            i.setAvailability(availability);
+            int idx = items.indexOf(item);
+            item.setTitle(title);
+            items.set(idx, item);
         }
     }
 
