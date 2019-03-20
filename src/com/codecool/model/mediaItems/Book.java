@@ -6,7 +6,14 @@ public class Book extends MediaItem implements Readable {
 
     }
 
-    public Book(String author, String releaseDate, int length) {
-        super(author, releaseDate, length);
+    public Book(String author, String releaseDate, String title, int length) {
+        super(author, releaseDate, title, length);
+
+
+    }
+
+    @Override
+    public void setAvailability(boolean b) {
+        this.available = b;
     }
 }

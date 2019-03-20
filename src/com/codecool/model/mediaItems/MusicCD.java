@@ -6,7 +6,12 @@ public class MusicCD extends MediaItem implements Listenable {
 
     }
 
-    public MusicCD(String author, String releaseDate, int length) {
-        super(author, releaseDate, length);
+    public MusicCD(String author, String releaseDate, String title, int length) {
+        super(author, releaseDate, title, length);
+    }
+
+    @Override
+    public void setAvailability(boolean b) {
+        this.available = b;
     }
 }
