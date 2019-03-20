@@ -87,7 +87,7 @@ public class MediaLibraryTest {
         String newAuthor = "New Author";
         lib.editItemAuthor(item1, manager, newAuthor);
         MediaItem result = lib.findItem(item1);
-        assertEquals(newAuthor, result.getTitle());
+        assertEquals(newAuthor, result.getAuthor());
     }
 
     @org.junit.Test
@@ -103,7 +103,7 @@ public class MediaLibraryTest {
         int newLength = 0;
         lib.editItemLength(item1, manager, newLength);
         MediaItem result = lib.findItem(item1);
-        assertEquals(newLength, result.getTitle());
+        assertEquals(newLength, result.getLength());
     }
 
     @org.junit.Test
@@ -127,7 +127,6 @@ public class MediaLibraryTest {
         String newTitle = "New Title";
         lib.editItemTitle(item1, user, newTitle);
         MediaItem result = lib.findItem(item1);
-        assertEquals(newTitle, result.getTitle());
         assertNotEquals(newTitle, result.getTitle());
     }
 
@@ -136,7 +135,7 @@ public class MediaLibraryTest {
         String newDate = "1000";
         lib.editItemReleaseDate(item1, manager, newDate);
         MediaItem result = lib.findItem(item1);
-        assertEquals(newDate, result.getTitle());
+        assertEquals(newDate, result.getReleaseDate());
     }
 
     @org.junit.Test
