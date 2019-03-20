@@ -2,21 +2,14 @@ package com.codecool.model.persistance;
 
 import com.codecool.model.Manager;
 import com.codecool.model.User;
-import com.codecool.model.mediaItems.Book;
 import com.codecool.model.mediaItems.MediaItem;
-import com.codecool.model.mediaItems.Movie;
-import com.codecool.model.mediaItems.MusicCD;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MediaLibrary {
 
-    private ArrayList<MediaItem> items = (ArrayList<MediaItem>) Arrays.asList(
-            new Book("Terry Pratchett", "20.03.2009",  "Night Watch", 340),
-            new Movie("Tarantino", "27.02", "Pulp Fiction", 120  ),
-            new MusicCD("Rammstein", "1996", "Sensucht", 120)
-    );
+    private ArrayList<MediaItem> items = new ArrayList<MediaItem>();
+
 
     public void add(MediaItem item, User user) {
         if (user instanceof Manager) {
@@ -24,7 +17,8 @@ public class MediaLibrary {
         }
     }
 
-        public void removeItem(MediaItem item, User user) {
+
+    public void removeItem(MediaItem item, User user) {
 
             if (user instanceof Manager && items.contains(item)) {
                 items.remove(item);
@@ -41,16 +35,18 @@ public class MediaLibrary {
         return null;
     }
 
+
     public void rent(MediaItem item, User user) {
         MediaItem i = findItem(item);
         i.setAvailability(false);
         user.addToRented(i);
-
     }
+
 
     public boolean isItemAvailable(MediaItem item) {
         return findItem(item).isAvailable();
     }
+
 
     public ArrayList<MediaItem> findItemsbyAuthor(String author) {
         return null;
@@ -60,6 +56,7 @@ public class MediaLibrary {
     public ArrayList<MediaItem> findItemsbyTitle(String title) {
         return null;
     }
+
 
     public ArrayList<MediaItem> findItemsbyLength (int length) {
         return null;
