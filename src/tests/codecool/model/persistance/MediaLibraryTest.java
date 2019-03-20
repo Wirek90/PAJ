@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class MediaLibraryTest {
     MediaLibrary lib;
@@ -82,33 +83,91 @@ public class MediaLibraryTest {
 
 
     @org.junit.Test
-    public void editItemTitle() {
-        String newTitle = "NewTitle";
+    public void editItemAuthorByManager() {
+        String newAuthor = "New Author";
+        lib.editItemAuthor(item1, manager, newAuthor);
+        MediaItem result = lib.findItem(item1);
+        assertEquals(newAuthor, result.getTitle());
+    }
+
+    @org.junit.Test
+    public void editItemAuthorByUser() {
+        String newAuthor = "New Author";
+        lib.editItemAuthor(item1, user, newAuthor);
+        MediaItem result = lib.findItem(item1);
+        assertNotEquals(newAuthor, result.getTitle());
+    }
+
+    @org.junit.Test
+    public void editItemLengthByManager() {
+        int newLength = 0;
+        lib.editItemLength(item1, manager, newLength);
+        MediaItem result = lib.findItem(item1);
+        assertEquals(newLength, result.getTitle());
+    }
+
+    @org.junit.Test
+    public void editItemLengthByUser() {
+        int newLength = 0;
+        lib.editItemLength(item1, user, newLength);
+        MediaItem result = lib.findItem(item1);
+        assertNotEquals(newLength, result.getTitle());
+    }
+
+    @org.junit.Test
+    public void editItemTitleByManager() {
+        String newTitle = "New Title";
         lib.editItemTitle(item1, manager, newTitle);
         MediaItem result = lib.findItem(item1);
         assertEquals(newTitle, result.getTitle());
+    }
 
+    @org.junit.Test
+    public void editItemTitleByUser() {
+        String newTitle = "New Title";
+        lib.editItemTitle(item1, user, newTitle);
+        MediaItem result = lib.findItem(item1);
+        assertEquals(newTitle, result.getTitle());
+        assertNotEquals(newTitle, result.getTitle());
+    }
+
+    @org.junit.Test
+    public void editItemDateByManager() {
+        String newDate = "1000";
+        lib.editItemReleaseDate(item1, manager, newDate);
+        MediaItem result = lib.findItem(item1);
+        assertEquals(newDate, result.getTitle());
+    }
+
+    @org.junit.Test
+    public void editItemDateByUser() {
+        String newDate = "1000";
+        lib.editItemReleaseDate(item1, user, newDate);
+        MediaItem result = lib.findItem(item1);
+        assertNotEquals(newDate, result.getTitle());
     }
 
 
-//    @org.junit.Test
-//    public void editItem() {
-//        String newAuthor = "newAuthor";
-//        String newTitle = "newTitle";
-//        String newDate = "2010";
-//        int newLength = 120;
-//        boolean newAvail  = false;
-//        lib.editItemData(item1, manager, newAuthor, newTitle, newDate, newLength, newAvail);
-//
-//        MediaItem editedItem = lib.findItem(item1);
-//
-//        assertEquals(newAuthor, editedItem.getAuthor());
-//        assertEquals(newTitle, editedItem.getTitle());
-//        assertEquals(newDate, editedItem.getReleaseDate());
-//        assertEquals(newLength, editedItem.getLength());
-//        assertEquals(newAvail, editedItem.isAvailable());
-//
-//    }
+
+
+    @org.junit.Test
+    public void editItem() {
+        String newAuthor = "newAuthor";
+        String newTitle = "newTitle";
+        String newDate = "2010";
+        int newLength = 120;
+        boolean newAvail  = false;
+        lib.editItemData(item1, manager, newAuthor, newTitle, newDate, newLength, newAvail);
+
+        MediaItem editedItem = lib.findItem(item1);
+
+        assertEquals(newAuthor, editedItem.getAuthor());
+        assertEquals(newTitle, editedItem.getTitle());
+        assertEquals(newDate, editedItem.getReleaseDate());
+        assertEquals(newLength, editedItem.getLength());
+        assertEquals(newAvail, editedItem.isAvailable());
+
+    }
 
 
     @org.junit.Test
