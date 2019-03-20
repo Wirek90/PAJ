@@ -1,0 +1,24 @@
+Story 1: Manager can add and remove MediaItems from the library
+       Tasks:
+            1) create Manager Class
+               * manager should extend class User
+            2) create MediaItems Library
+                * library should contain a private list of mediaItems
+                * library should have add and remove methods with 2 parameters (user, item)
+                * library should allow adding and removing only for a manager
+            3) create tests for library add and remove methods
+
+
+
+Story 2: Managers can edit the meta data of a MediaItem in a library
+        1) Create setters for meta data fields in MediaItem class
+              * all meta data fields should have setters
+        2) Create method find item in Library
+              * the method should be public
+              * the method should be usable by Users and Managers
+        3) Create methods edit item in Library
+              * create seperate methods for editing different data
+              * the methods should allow editing only for a manager
+
+
+
