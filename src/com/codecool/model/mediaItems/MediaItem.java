@@ -6,7 +6,7 @@ abstract public class MediaItem {
     String releaseDate;
     String title;
     int length;
-    boolean available = true;
+    boolean available;
 
 
     public MediaItem(String author, String releaseDate, String title, int length) {
@@ -14,6 +14,7 @@ abstract public class MediaItem {
         this.releaseDate = releaseDate;
         this.title = title;
         this.length = length;
+        this.available = true;
 
     }
 
@@ -45,13 +46,15 @@ abstract public class MediaItem {
         this.length = length;
     }
 
+    public void setTitle(String title) {
+    }
 
-
+    public boolean isAvailable() {
+        return available;
+    }
 
     public abstract void setAvailability(boolean b);
 
-    public void setTitle(String title) {
-    }
 
 
 
